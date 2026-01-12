@@ -1,0 +1,50 @@
+{
+  "name": "@semwerk/semspec",
+  "version": "0.1.0",
+  "description": "TypeScript parsers and validators for Semwerk specifications",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "validate": "ts-node src/cli/validate.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "semwerk",
+    "documentation",
+    "code-doc-linking",
+    "parser",
+    "validator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semwerk/semspec-ts"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "homepage": "https://github.com/semwerk/spec",
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "js-yaml": "^4.1.0",
+    "yaml": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
