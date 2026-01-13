@@ -1,5 +1,5 @@
 {
-  "name": "@semwerk/werkspec",
+  "name": "@semwerk/semspec",
   "version": "0.1.0",
   "description": "TypeScript parsers and validators for Semwerk specifications",
   "license": "MIT",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/semwerk/werkspec-ts"
+    "url": "https://github.com/semwerk/semspec-ts"
   },
   "homepage": "https://github.com/semwerk/spec",
   "dependencies": {

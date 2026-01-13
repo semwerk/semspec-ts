@@ -2,7 +2,7 @@ import yaml from 'js-yaml';
 
 export interface Frontmatter {
   template_id?: string;
-  werkcontext?: {
+  semcontext?: {
     semantics?: ContentSemantics;
     segments?: SegmentDefinition[];
   };
@@ -83,11 +83,11 @@ export function parseFrontmatter(markdown: string): { frontmatter: Frontmatter |
 export function validateFrontmatter(frontmatter: Frontmatter): string[] {
   const errors: string[] = [];
 
-  if (!frontmatter.werkcontext) {
+  if (!frontmatter.semcontext) {
     return errors; // Optional field
   }
 
-  const segments = frontmatter.werkcontext.segments || [];
+  const segments = frontmatter.semcontext.segments || [];
   const ids = new Set<string>();
 
   for (const seg of segments) {
@@ -134,5 +134,5 @@ export function validateFrontmatter(frontmatter: Frontmatter): string[] {
 }
 
 export function extractSegmentDefinitions(frontmatter: Frontmatter): SegmentDefinition[] {
-  return frontmatter.werkcontext?.segments || [];
+  return frontmatter.semcontext?.segments || [];
 }

@@ -7,8 +7,8 @@ export interface ParsedSegment {
   endLine: number;
 }
 
-const START_PATTERN = /<!--werkcontext:segment\s+start\s+key="([^"]+)"(?:\s+type="([^"]+)")?(?:\s+audience="([^"]+)")?\s*-->/g;
-const END_PATTERN = /<!--werkcontext:segment\s+end\s*-->/g;
+const START_PATTERN = /<!--semcontext:segment\s+start\s+key="([^"]+)"(?:\s+type="([^"]+)")?(?:\s+audience="([^"]+)")?\s*-->/g;
+const END_PATTERN = /<!--semcontext:segment\s+end\s*-->/g;
 
 export function parseSegments(markdown: string): ParsedSegment[] {
   const segments: ParsedSegment[] = [];
@@ -21,7 +21,7 @@ export function parseSegments(markdown: string): ParsedSegment[] {
     const line = lines[i];
 
     // Check for start marker
-    const startMatch = line.match(/<!--werkcontext:segment\s+start\s+key="([^"]+)"(?:\s+type="([^"]+)")?(?:\s+audience="([^"]+)")?\s*-->/);
+    const startMatch = line.match(/<!--semcontext:segment\s+start\s+key="([^"]+)"(?:\s+type="([^"]+)")?(?:\s+audience="([^"]+)")?\s*-->/);
 
     if (startMatch) {
       if (currentSegment) {

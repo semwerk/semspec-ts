@@ -4,7 +4,7 @@ describe('Frontmatter Parser', () => {
   const sampleMarkdown = `---
 template_id: @api-reference
 
-werkcontext:
+semcontext:
   segments:
     - id: overview
       type: overview
@@ -29,7 +29,7 @@ The actual markdown content goes here.
 
     expect(frontmatter).not.toBeNull();
     expect(frontmatter?.template_id).toBe('@api-reference');
-    expect(frontmatter?.werkcontext?.segments).toHaveLength(2);
+    expect(frontmatter?.semcontext?.segments).toHaveLength(2);
     expect(content).toContain('# Documentation Content');
   });
 
@@ -53,7 +53,7 @@ The actual markdown content goes here.
 
   test('should detect duplicate segment IDs', () => {
     const duplicate = `---
-werkcontext:
+semcontext:
   segments:
     - id: test
       type: overview
@@ -71,7 +71,7 @@ werkcontext:
 
   test('should validate boost range', () => {
     const invalid = `---
-werkcontext:
+semcontext:
   segments:
     - id: test
       boost: 15.0

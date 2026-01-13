@@ -1,11 +1,11 @@
-# werkspec-ts
+# semspec-ts
 
 TypeScript parsers and validators for [Semwerk specifications](https://github.com/semwerk/spec).
 
 ## Installation
 
 ```bash
-npm install @semwerk/werkspec
+npm install @semwerk/semspec
 ```
 
 ## Development
@@ -29,10 +29,10 @@ npm run lint
 ### Parse Linkage Mapping
 
 ```typescript
-import { parseLinkage, validateLinkage } from '@semwerk/werkspec';
+import { parseLinkage, validateLinkage } from '@semwerk/semspec';
 import fs from 'fs';
 
-const yaml = fs.readFileSync('.werkcontext/linkage.yaml', 'utf-8');
+const yaml = fs.readFileSync('.semcontext/linkage.yaml', 'utf-8');
 const linkage = parseLinkage(yaml);
 
 // Validate against schema
@@ -48,7 +48,7 @@ console.log(linkage.code_to_assets);
 ### Parse Segment Markers
 
 ```typescript
-import { parseSegments } from '@semwerk/werkspec';
+import { parseSegments } from '@semwerk/semspec';
 
 const markdown = fs.readFileSync('README.md', 'utf-8');
 const segments = parseSegments(markdown);
@@ -62,20 +62,20 @@ segments.forEach(seg => {
 ### Parse Frontmatter
 
 ```typescript
-import { parseFrontmatter } from '@semwerk/werkspec';
+import { parseFrontmatter } from '@semwerk/semspec';
 
 const markdown = fs.readFileSync('docs/api.md', 'utf-8');
 const { frontmatter, content } = parseFrontmatter(markdown);
 
-console.log(frontmatter.werkcontext.segments);
+console.log(frontmatter.semcontext.segments);
 ```
 
 ### Validate Files
 
 ```typescript
-import { validateAll } from '@semwerk/werkspec';
+import { validateAll } from '@semwerk/semspec';
 
-const results = validateAll('.werkcontext/');
+const results = validateAll('.semcontext/');
 
 if (results.errors.length > 0) {
   results.errors.forEach(err => console.error(err));
@@ -114,13 +114,13 @@ if (results.errors.length > 0) {
 
 ```bash
 # Validate linkage.yaml
-npx @semwerk/werkspec validate .werkcontext/linkage.yaml
+npx @semwerk/semspec validate .semcontext/linkage.yaml
 
 # Parse and display segments
-npx @semwerk/werkspec segments README.md
+npx @semwerk/semspec segments README.md
 
 # Validate all files
-npx @semwerk/werkspec validate-all .werkcontext/
+npx @semwerk/semspec validate-all .semcontext/
 ```
 
 ## Specifications

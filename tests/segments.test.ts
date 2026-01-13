@@ -3,19 +3,19 @@ import { parseSegments, validateSegments, findSegment, extractSegmentContent } f
 describe('Segment Parser', () => {
   const sampleMarkdown = `# Documentation
 
-<!--werkcontext:segment start key="overview" type="overview" audience="user,developer"-->
+<!--semcontext:segment start key="overview" type="overview" audience="user,developer"-->
 ## Overview
 
 This is an overview section.
-<!--werkcontext:segment end-->
+<!--semcontext:segment end-->
 
 Some content between segments.
 
-<!--werkcontext:segment start key="api-ref" type="reference"-->
+<!--semcontext:segment start key="api-ref" type="reference"-->
 ## API Reference
 
 API documentation here.
-<!--werkcontext:segment end-->
+<!--semcontext:segment end-->
 `;
 
   test('should parse segment markers', () => {
@@ -44,13 +44,13 @@ API documentation here.
   });
 
   test('should detect duplicate keys', () => {
-    const duplicate = `<!--werkcontext:segment start key="test"-->
+    const duplicate = `<!--semcontext:segment start key="test"-->
 Content 1
-<!--werkcontext:segment end-->
+<!--semcontext:segment end-->
 
-<!--werkcontext:segment start key="test"-->
+<!--semcontext:segment start key="test"-->
 Content 2
-<!--werkcontext:segment end-->
+<!--semcontext:segment end-->
 `;
 
     const segments = parseSegments(duplicate);
@@ -84,18 +84,18 @@ Content 2
   });
 
   test('should throw error on nested segments', () => {
-    const nested = `<!--werkcontext:segment start key="outer"-->
-<!--werkcontext:segment start key="inner"-->
+    const nested = `<!--semcontext:segment start key="outer"-->
+<!--semcontext:segment start key="inner"-->
 Content
-<!--werkcontext:segment end-->
-<!--werkcontext:segment end-->
+<!--semcontext:segment end-->
+<!--semcontext:segment end-->
 `;
 
     expect(() => parseSegments(nested)).toThrow('Nested segment markers');
   });
 
   test('should throw error on unclosed segment', () => {
-    const unclosed = `<!--werkcontext:segment start key="test"-->
+    const unclosed = `<!--semcontext:segment start key="test"-->
 Content without end marker
 `;
 
@@ -104,7 +104,7 @@ Content without end marker
 
   test('should throw error on unmatched end marker', () => {
     const unmatched = `Some content
-<!--werkcontext:segment end-->
+<!--semcontext:segment end-->
 `;
 
     expect(() => parseSegments(unmatched)).toThrow('Unmatched end marker');
