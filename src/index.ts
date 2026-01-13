@@ -105,3 +105,16 @@ export {
 
 // Validators
 export { validateAll, type ValidationResult } from './validators';
+
+// Semcontext primitives (migrated from sem-primitives)
+export * as Primitives from './primitives/index.js';
+export {
+  Segments,
+  References,
+  StrongLinks,
+  Navigation,
+  Versioning,
+  Metadata,
+  VERSION as SemcontextVersion,
+  SPEC_VERSION as SemcontextSpecVersion,
+} from './primitives/index.js';
