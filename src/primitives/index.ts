@@ -1,12 +1,11 @@
 /**
- * @sem/primitives
+ * Semspec primitives
  *
- * TypeScript implementation of Semcontext specifications.
  * Framework-agnostic primitives for building intelligent documentation systems.
  *
  * @example
  * ```typescript
- * import { Segments, References, StrongLinks } from '@sem/primitives';
+ * import { Segments, References, StrongLinks } from '@semwerk/semspec/primitives';
  *
  * // Parse segments
  * const parsed = Segments.parseSegments(markdown);
