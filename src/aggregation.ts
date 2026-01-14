@@ -70,7 +70,7 @@ export function aggregatePageMetadata(annotations: ExternalAnnotations): PageAgg
   if (annotations.semantics) {
     Object.entries(annotations.semantics).forEach(([key, values]) => {
       if (values && semantics[key]) {
-        values.forEach(v => semantics[key].add(v));
+        values.forEach((v: string) => semantics[key].add(v));
       }
     });
   }
@@ -96,7 +96,7 @@ export function aggregatePageMetadata(annotations: ExternalAnnotations): PageAgg
     if (segment.semantics) {
       Object.entries(segment.semantics).forEach(([key, values]) => {
         if (values && Array.isArray(values) && semantics[key]) {
-          values.forEach(v => semantics[key].add(v));
+          values.forEach((v: string) => semantics[key].add(v));
         }
       });
     }

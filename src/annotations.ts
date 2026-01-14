@@ -1,3 +1,13 @@
+export interface ByteRange {
+  start: number;
+  end: number;
+}
+
+export interface LineRange {
+  start: number;
+  end: number;
+}
+
 export interface ExternalAnnotations {
   version: string;
   source_file: string;
@@ -34,8 +44,8 @@ export interface AnnotatedSegment {
   concepts?: string | string[];
   boost?: number;
   semantics?: SegmentSemantics;
-  byte_range?: { start: number; end: number };
-  line_range?: { start: number; end: number };
+  byte_range?: ByteRange;
+  line_range?: LineRange;
   heading?: string;
   segment_checksum?: string;
   segment_ref?: string;

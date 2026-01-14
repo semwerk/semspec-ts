@@ -1,21 +1,25 @@
 import yaml from 'js-yaml';
 
+export interface Semver {
+  major: number;
+  minor: number;
+  patch: number;
+  prerelease?: string;
+  build?: string;
+}
+
+export interface Freeform {
+  version: string;
+}
+
 export interface ProjectVersion {
   id: string;
   project: string;
   key: string;
   name: string;
   mode: 'semver' | 'freeform';
-  semver?: {
-    major: number;
-    minor: number;
-    patch: number;
-    prerelease?: string;
-    build?: string;
-  };
-  freeform?: {
-    version: string;
-  };
+  semver?: Semver;
+  freeform?: Freeform;
   status: 'draft' | 'alpha' | 'beta' | 'rc' | 'supported' | 'deprecated' | 'eol';
   type?: 'major_release' | 'minor_release' | 'patch_release' | 'hotfix';
   release_date?: string;

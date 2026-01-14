@@ -2,7 +2,7 @@ import { parseFrontmatter, validateFrontmatter, extractSegmentDefinitions } from
 
 describe('Frontmatter Parser', () => {
   const sampleMarkdown = `---
-template_id: @api-reference
+template_id: "@api-reference"
 
 semcontext:
   segments:

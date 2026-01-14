@@ -118,7 +118,7 @@ export function validateJourney(journey: Journey): string[] {
 function hasCycles(nodes: JourneyNode[]): boolean {
   const graph = new Map<string, string[]>();
   for (const node of nodes) {
-    graph.set(node.id, node.connections.map(c => c.target_node_id).filter(Boolean) as string[]);
+    graph.set(node.id, (node.connections ?? []).map(c => c.target_node_id).filter(Boolean) as string[]);
   }
 
   const visited = new Set<string>();
